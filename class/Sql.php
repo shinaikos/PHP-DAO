@@ -6,6 +6,7 @@ class Sql extends PDO
 
     private $conn;
 
+    // metodo construtor | cria a conexão com o database quando chamado
     public function __construct()
     {
 
@@ -18,11 +19,12 @@ class Sql extends PDO
 
         foreach($parameters as $key => $value)
         {
-            $this->setParam($key, $value);
+            $this->setParam($statemente, $key, $value);
         }
 
     }
 
+    // setParam 
     private function setParam($statemente,$key, $value)
     {
         $statemente->bindParam($key, $value);
