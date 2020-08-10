@@ -19,8 +19,14 @@
 
     // echo json_encode($usuarios);
 
-    $busca = Usuario::search("Gu");
+    // $busca = Usuario::search("Gu");
 
-    echo json_encode($busca);
+    // echo json_encode($busca);
 
+
+    $login = new Usuario;
+
+    $login->login("Gui", "poiuytre");
+
+    echo $login;
 ?>
