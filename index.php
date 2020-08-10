@@ -9,10 +9,18 @@
     // echo json_encode($usuarios);
 
 
-    $root = new Usuario();
+    // $root = new Usuario();
 
-    $root->loadById(2);
+    // $root->loadById(2);
 
-    echo $root;
+    // echo $root;
+
+    // $usuarios = Usuario::getList();
+
+    // echo json_encode($usuarios);
+
+    $busca = Usuario::search("Gu");
+
+    echo json_encode($busca);
 
 ?>
