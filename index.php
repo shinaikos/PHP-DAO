@@ -24,15 +24,22 @@
     // echo json_encode($busca);
 
 
-    $login = new Usuario();
+    // $login = new Usuario();
 
-    $login->setDessenha( "poiuytre");
+    // $login->setDessenha( "poiuytre");
 
-    $login->setDeslogin("Gui");
+    // $login->setDeslogin("Gui");
 
-    $login->insert();
+    // $login->insert();
 
-    echo $login;
+    // echo $login;
 
-   
+
+    $usuario = new Usuario();
+
+    $usuario->loadById(7);
+
+    $usuario->update("update", "etadpu");
+
+    echo $usuario;
 ?>

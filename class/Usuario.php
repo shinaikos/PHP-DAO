@@ -66,12 +66,26 @@ class Usuario
         $this->setDessenha($pass);
     }
 
+    public function update($login, $pass)
+    {
+        $this->setDeslogin($login);
+        $this->setDessenha($pass);
+
+        $sql = new Sql();
+
+        $sql->query("UPDATE tb_usuarios SET deslogin = :LOGIN, dessenha = :PASS WHERE id_usuario = :ID", array(
+            ':LOGIN' => $this->getDeslogin(),
+            ':PASS' => $this->getDessenha(),
+            ':ID' => $this->getIdusuario()
+        ));
+    }
+
     public function loadById($id)
     {
 
         $sql = new Sql();
 
-        $results = $sql->select("SELECT * FROM tb_usuarios WHERE idusuario = :ID", array(
+        $results = $sql->select("SELECT * FROM tb_usuarios WHERE id_usuario = :ID", array(
             ":ID"=>$id
         ));
        
