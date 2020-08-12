@@ -52,6 +52,20 @@ class Usuario
         $this->dtcadastro = $value;
     }
 
+    public function setData($data)
+    {
+        $this->setIdusuario($data['id_usuario']);
+        $this->setDeslogin($data['deslogin']);
+        $this->setDessenha($data['dessenha']);
+        $this->setDtcadastro($data['dtcadastro']);
+    }
+
+    public function __construct($login = "", $pass = "")
+    {
+        $this->setDeslogin($login);
+        $this->setDessenha($pass);
+    }
+
     public function loadById($id)
     {
 
@@ -64,12 +78,7 @@ class Usuario
 
         if(count($results) > 0)
         {
-            $row = $results[0];
-
-            $this->setIdusuario($row['idusuario']);
-            $this->setDeslogin($row['deslogin']);
-            $this->setDessenha($row['dessenha']);
-            $this->setDtcadastro($row['dtcadastro']);
+            $this->setData($results[0]);
         }
     }
 
@@ -85,17 +94,28 @@ class Usuario
 
         if(count($results) > 0)
         {
-            $row = $results[0];
-
-            $this->setIdusuario($row['idusuario']);
-            $this->setDeslogin($row['deslogin']);
-            $this->setDessenha($row['dessenha']);
-            $this->setDtcadastro($row['dtcadastro']);
+            $this->setData($results[0]);
         }
         else
         {
             throw new Exception("Login e/ou Senha invalidos");
         }
+    }
+
+    public function insert()
+    {
+        $sql = new Sql();
+
+        $results = $sql->select("CALL sp_usuario_insert(:LOGIN, :PASS)",  array(
+            ":LOGIN" => $this->getDeslogin(),
+            ":PASS" => $this->getDessenha()
+        ));
+
+        if(count($results) > 0)
+        {
+            $this->setData($results[0]);
+        }
+        
     }
 
     public static function search($login)

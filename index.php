@@ -24,9 +24,15 @@
     // echo json_encode($busca);
 
 
-    $login = new Usuario;
+    $login = new Usuario();
 
-    $login->login("Gui", "poiuytre");
+    $login->setDessenha( "poiuytre");
+
+    $login->setDeslogin("Gui");
+
+    $login->insert();
 
     echo $login;
+
+   
 ?>
