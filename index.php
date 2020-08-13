@@ -35,11 +35,18 @@
     // echo $login;
 
 
-    $usuario = new Usuario();
+//     $usuario = new Usuario();
 
-    $usuario->loadById(7);
+//     $usuario->loadById(7);
 
-    $usuario->update("update", "etadpu");
+//     $usuario->update("update", "etadpu");
 
-    echo $usuario;
-?>
+//     echo $usuario;
+
+$user = new Usuario();
+
+$user->loadById(9);
+$user->delete();
+
+echo $user;
+// ?>

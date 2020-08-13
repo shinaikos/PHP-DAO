@@ -149,6 +149,20 @@ class Usuario
         return $sql->select("SELECT * FROM tb_usuarios ORDER BY deslogin");
     }
 
+    public function delete()
+    {
+        $sql = new Sql();
+
+        $sql->query("DELETE FROM tb_usuarios WHERE id_usuario = :ID", array(
+            ":ID" => $this->getIdusuario()
+        ));
+
+        $this->setDeslogin("");
+        $this->setIdusuario(0);
+        $this->setDessenha("");
+        $this->setDtcadastro(new DateTime());
+    }
+
  
 
     public function __toString()
